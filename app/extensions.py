@@ -15,4 +15,3 @@ db = SQLAlchemy(app)
 ###########################
 
 # TODO: Add authentication setup code here!
-
