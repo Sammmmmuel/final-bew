@@ -1,17 +1,17 @@
-from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
-from flask_bcrypt import Bcrypt
-from app.config import Config
-import os
+# from flask import Flask
+# from flask_sqlalchemy import SQLAlchemy
+# from flask_login import LoginManager
+# from flask_bcrypt import Bcrypt
+# from app.config import Config
+# import os
 
-app = Flask(__name__)
-app.config.from_object(Config)
+# app = Flask(__name__)
+# app.config.from_object(Config)
 
-db = SQLAlchemy(app)
+# db = SQLAlchemy(app)
 
-###########################
-# Authentication
-###########################
+# ###########################
+# # Authentication
+# ###########################
 
-# TODO: Add authentication setup code here!
+# # TODO: Add authentication setup code here!
