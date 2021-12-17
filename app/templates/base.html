@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Project Title</title>
-        <link rel="stylesheet" href="/static/style.css">
-    </head>
-    <body>
-        <!-- Add base html here. -->
-        
-        {% block content %}{% endblock %}
-    </body>
+
+<head>
+    <title class="text-large light">Skateboard Competitions page</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div id="content">
+        {% for message in get_flashed_messages() %}
+        <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="d-flex align-items-start">
+            <a class="navbar-brand" href="#">
+                <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24">
+            </a>
+            <a class="navbar-brand p-2" href="/">Home</a> {% if current_user.is_authenticated %}
+            <a class="navbar-brand p-2" href="/new_event">New competitions</a>
+            <a class="navbar-brand p-2" href="/new_competition">Add competition</a>
+            <a class="navbar-brand p-2" href="/logout">Log Out</a> {% else %}
+            <a class="navbar-brand p-2" href="/login">Log In</a>
+            <a class="navbar-brand p-2" href="/signup">Sign Up</a> {% endif %}
+        </div>
+    </nav>
+
+    {% block content %} {% endblock %}
+
+</body>
+
 </html>

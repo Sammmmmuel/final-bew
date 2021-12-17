@@ -1,1 +1,14 @@
-/* Add styles here. */
+.home-background {
+    background-color: rgb(182, 182, 182);
+    min-height: 100vh;
+}
+
+.h2 {
+    justify-content: center;
+    align-items: center;
+}
+
+.p {
+    justify-content: center;
+    align-items: center;
+}

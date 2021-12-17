@@ -1,24 +1,45 @@
-import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from .config import Config
-from flask_login import LoginManager, login_manager
 from flask_bcrypt import Bcrypt
+from app.config import Config
 
-# App Setup
+import os
+
 app = Flask(__name__)
 app.config.from_object(Config)
-app.secret_key = os.urandom(24)  
+app.secret_key = os.urandom(24)
 
-# DB Setup
 db = SQLAlchemy(app)
 
-# Auth
-# login_manager = LoginManager()
-# login_manager.login_view = "auth.login"
-# login_manager.init_app(app)
+###########################
+# Authentication
+###########################
+
+# TODO: Add authentication setup code here!
+from flask_login import LoginManager
+login_manager = LoginManager()
+login_manager.login_view = "auth.login"
+login_manager.init_app(app)
+
+from .models import User
+
+@login_manager.user_loader
+def load_user(user_id):
+   return User.query.get(user_id)
+
+bcrypt = Bcrypt(app)
 
 
-# App Context
+
+###########################
+# Blueprints
+###########################
+
+from app.main.routes import main as main_routes
+app.register_blueprint(main_routes)
+
+from app.auth.routes import auth as auth_routes
+app.register_blueprint(auth_routes)
+
 with app.app_context():
     db.create_all()

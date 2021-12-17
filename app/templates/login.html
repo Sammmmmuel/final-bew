@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+<div>
+    <h1>Log In</h1>
+    <form action="{{ url_for('auth.login') }}" method="POST">
+        {{ form.csrf_token }}
+        <fieldset>
+            <legend>Please Log In to continue</legend>
+
+            {{ form.username.label }} {{ form.username }}
+            <ul>
+                {% for error in form.username.errors %}
+                <li class="error">{{ error }}</li>
+                {% endfor %}
+            </ul>
+
+            {{ form.password.label }} {{ form.password }}
+            <ul>
+                {% for error in form.password.errors %}
+                <li class="error">{{ error }}</li>
+                {% endfor %}
+            </ul>
+
+            {{ form.submit }}
+        </fieldset>
+    </form>
+</div>
+
+{% endblock %}

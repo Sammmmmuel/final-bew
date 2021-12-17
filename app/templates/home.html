@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block content %}
+<div class=home-background>
+    <h1 class='d-flex justify-content-center'>Competitions</h1>
+
+    <p class='d-flex justify-content-center align-items-center'><em>Come take a look at the next competitions!</em></p>
+
+    <h2 class='d-flex justify-content-center'>All Events</h2>
+
+    {% for event in all_events %}
+    <div class="event">
+
+        <a class="event d-flex justify-content-center" href="/event/{{ event.id }}">{{ event.title }}</a>
+        <p class="event d-flex justify-content-center"><strong>Description:</strong> {{ event.description }}</p>
+        <p class="event d-flex justify-content-center"><strong>Address:</strong> {{ event.address }}</p>
+        <p class="event d-flex justify-content-center"><strong> Competitions Attending:</strong> {{ event.competitions|length }}</p>
+        <a class="event d-flex justify-content-center" href="/competitions_show/{{ event.id }}">Check out the competitions show!</a>
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
